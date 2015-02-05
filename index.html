@@ -1,0 +1,90 @@
+<html>
+	<head>
+		<style>
+			* {
+				margin: 0;
+			}
+			body {
+				padding: 8px;
+				width: 600px;
+				margin-left: auto;
+    			margin-right: auto;
+			}
+			/*text*/ h1, h2, p {
+				width: 90%;
+				margin-left: 5%;
+			}
+			h1 {
+				font-family: Didot;
+			}
+			h2, p {
+				font-family: Baskerville;
+			}
+			h2{
+				font-size: 1.2em;
+			}
+			img {
+				width: 100%;
+			}
+			img.selected {
+				border-style: solid;
+				border-width: 5px;
+				border-color: rgb(0,255,0);
+			}
+		</style>
+		<script type="text/javascript" src="jquery.js"></script>
+		<script>
+			var images = [
+				"trains/1.jpg",
+				"trains/2.jpg",
+				"trains/3.jpg",
+				"trains/4.jpg"
+			];
+
+			var allImageElements = [];
+
+			$(function(){
+				images.forEach(function addImage(imgUrl) {
+					var imageElement = $('<img/><svg src="check.svg" />');
+					imageElement.attr('src', imgUrl);
+
+					$('#imageList').append(imageElement);
+
+					// lets add a click handler...
+					imageElement.click(function(event) {
+						this.toggleClass('selected');
+					}.bind(imageElement));
+
+					allImageElements.push(imageElement);
+				});
+			});
+
+			function deselectAll() {
+				allImageElements.forEach(function deselect(el) {
+					el.removeClass('selected');
+				});
+			}
+
+			function selectAll() {
+				allImageElements.forEach(function select(el) {
+					el.addClass('selected');
+				});
+			}
+		</script>
+	</head>
+	<body>
+		<h1>San Mateo High Express</h1>
+		<h2>Hitch a ride out of San Mateo High.</h2>
+		<br>
+			<p><em>San Mateo High Express</em> is a simple resource for San Mateo High School students to hitch rides from San Mateo high school with other students that are heading out in the same direction at the same time. We make it easy for these people to keep track of the rides they've given and the rides they get, in addition to finding potential rides.</p>
+		<br>
+
+		<button type="button" onclick="selectAll()">Select All</button>
+		<button type="button" onclick="deselectAll()">Deselect All</button>
+
+		<!-- IMAGES!!! O.o -->
+		<div id="imageList">
+			<!--<img src="train.jpg" width="100%" />-->
+		</div>
+	</body>
+</html>
