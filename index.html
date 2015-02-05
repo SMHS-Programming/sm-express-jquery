@@ -25,30 +25,48 @@
 			}
 			img {
 				width: 100%;
+				z-index: 2;
+				position: relative;
+			}
+			svg {
+				left: calc((100% - 600px) / 2);
+				z-index: 1;
+				position: absolute;
+				width: 100px;
+				margin-top: 5%;
+				margin-left: 5%;
 			}
 			img.selected {
-				border-style: solid;
-				border-width: 5px;
-				border-color: rgb(0,255,0);
+				z-index: 0;
 			}
 		</style>
 		<script type="text/javascript" src="jquery.js"></script>
 		<script>
 			var images = [
+				"trains/0.jpg",
 				"trains/1.jpg",
 				"trains/2.jpg",
-				"trains/3.jpg",
-				"trains/4.jpg"
+				"trains/3.jpg"
 			];
+			
+			var checkMark = '<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="91.8 326.1 466.7 355.8" enable-background="new 91.8 326.1 466.7 355.8" xml:space="preserve"> <polygon id="check_1_" fill="#FFFFFF" points="91.8,517.4 147.3,463.8 256.3,572.9 503,326.1 558.5,379.7 256.3,681.9 "/>';
 
 			var allImageElements = [];
-
+			var counter = 0;
 			$(function(){
 				images.forEach(function addImage(imgUrl) {
-					var imageElement = $('<img/><svg src="check.svg" />');
+					var imageElement = $('<img></img>');
 					imageElement.attr('src', imgUrl);
 
-					$('#imageList').append(imageElement);
+					var currId = 'img' + counter;
+					console.log(currId);
+
+					$('#imageList').append('<div id=' + currId  + '></div>');
+
+					currId = '#' + currId;
+					
+					$(currId).append(imageElement);
+					$(currId).append(checkMark);
 
 					// lets add a click handler...
 					imageElement.click(function(event) {
@@ -56,6 +74,7 @@
 					}.bind(imageElement));
 
 					allImageElements.push(imageElement);
+					counter++;
 				});
 			});
 
