@@ -3,6 +3,11 @@
 		<style>
 			* {
 				margin: 0;
+				-webkit-transition: all 500ms ease;
+				-moz-transition: all 500ms ease;
+				-ms-transition: all 500ms ease;
+				-o-transition: all 500ms ease;
+				transition: all 500ms ease;
 			}
 			body {
 				padding: 8px;
@@ -13,6 +18,21 @@
 			/*text*/ h1, h2, p {
 				width: 90%;
 				margin-left: 5%;
+			}
+			button {
+				width: 45%;
+				border: none;
+				font-family: Lato;
+				background-color: #777;
+				color: white;
+				height: 3em;
+				font-size: .75em;
+			}
+			button:hover {
+				background-color: #333;
+			}
+			button:active {
+				background-color: #111;
 			}
 			h1 {
 				font-family: Didot;
@@ -27,6 +47,7 @@
 				width: 100%;
 				z-index: 2;
 				position: relative;
+				padding-bottom: 5px;
 			}
 			svg {
 				left: calc((100% - 600px) / 2);
@@ -98,9 +119,10 @@
 			<p><em>San Mateo High Express</em> is a simple resource for San Mateo High School students to hitch rides from San Mateo high school with other students that are heading out in the same direction at the same time. We make it easy for these people to keep track of the rides they've given and the rides they get, in addition to finding potential rides.</p>
 		<br>
 
-		<button type="button" onclick="selectAll()">Select All</button>
+		<button type="button" onclick="selectAll()" style="margin-left: 5%;">Select All</button>
 		<button type="button" onclick="deselectAll()">Deselect All</button>
 
+		<br><br>
 		<!-- IMAGES!!! O.o -->
 		<div id="imageList">
 			<!--<img src="train.jpg" width="100%" />-->
