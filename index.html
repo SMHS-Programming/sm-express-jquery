@@ -59,6 +59,7 @@
 			}
 			img.selected {
 				z-index: 0;
+				opacity: .45;
 			}
 		</style>
 		<script type="text/javascript" src="jquery.js"></script>
@@ -76,7 +77,7 @@
 			var counter = 0;
 			$(function(){
 				images.forEach(function addImage(imgUrl) {
-					var imageElement = $('<img></img>');
+					var imageElement = $('<img/>');
 					imageElement.attr('src', imgUrl);
 
 					var currId = 'img' + counter;
